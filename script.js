@@ -7,111 +7,34 @@ function checkIfCorrect() {
   let confirmPassword = document.getElementById(`confirm-password`).value;
   let message = document.getElementById(`message`);
   let messageTwo = document.getElementById(`messageTwo`);
-  let stop = false;
-
+  let info = "";
   if (password.length == 0) {
     message.innerHTML = "Wprowadź hasło";
   } else if (password.length < 8) {
-    if (
-      !containsUpperCase(password) &&
-      !containsLowerCase(password) &&
-      !containsSpecialCharter(password)
-    ) {
-      message.innerHTML =
-        "Za krótkie hasło. Min 8 znaków<br>Min 1 duża litera<br>Min 1 mała litera<br>Min 1 znak specjalny";
-    } else if (
-      containsUpperCase(password) &&
-      !containsLowerCase(password) &&
-      !containsSpecialCharter(password)
-    ) {
-      message.innerHTML =
-        "Za krótkie hasło. Min 8 znaków<br>Min 1 mała litera<br>Min 1 znak specjalny";
-    } else if (
-      containsUpperCase(password) &&
-      containsLowerCase(password) &&
-      !containsSpecialCharter(password)
-    ) {
-      message.innerHTML =
-        "Za krótkie hasło. Min 8 znaków<br>Min 1 znak specjalny";
-    } else if (
-      containsUpperCase(password) &&
-      !containsLowerCase(password) &&
-      containsSpecialCharter(password)
-    ) {
-      message.innerHTML = "Za krótkie hasło. Min 8 znaków<br>Min 1 mała litera";
-    } else if (
-      !containsUpperCase(password) &&
-      containsLowerCase(password) &&
-      !containsSpecialCharter(password)
-    ) {
-      message.innerHTML =
-        "Za krótkie hasło. Min 8 znaków<br>Min 1 duża litera<br>Min 1 znak specjalny";
-    } else if (
-      !containsUpperCase(password) &&
-      containsLowerCase(password) &&
-      containsSpecialCharter(password)
-    ) {
-      message.innerHTML = "Za krótkie hasło. Min 8 znaków<br>Min 1 duża litera";
-    } else if (
-      !containsUpperCase(password) &&
-      !containsLowerCase(password) &&
-      containsSpecialCharter(password)
-    ) {
-      message.innerHTML =
-        "Za krótkie hasło. Min 8 znaków<br>Min 1 duża litera<br>Min 1 mała litera";
-    } else if (password.length < 8) {
-      message.innerHTML = "Za krótkie hasło. Min 8 znaków";
+    info += "Za krótkie hasło. Min. 8 znaków<br>";
+    if (!containsUpperCase(password)) {
+      info += "Min 1 duża litera<br>";
     }
+    if (!containsLowerCase(password)) {
+      info += "Min 1 mała litera<br>";
+    }
+    if (!containsSpecialCharter(password)) {
+      info += "Min 1 znak specjalny<br>";
+    }
+    message.innerHTML = info;
   } else if (password.length >= 8) {
-    if (
-      !containsUpperCase(password) &&
-      !containsLowerCase(password) &&
-      !containsSpecialCharter(password)
-    ) {
-      message.innerHTML =
-        "Min 1 duża litera<br>Min 1 mała litera<br>Min 1 znak specjalny";
-    } else if (
-      password.length < 8 &&
-      containsUpperCase(password) &&
-      !containsLowerCase(password) &&
-      !containsSpecialCharter(password)
-    ) {
-      message.innerHTML =
-        "Za krótkie hasło. Min 8 znaków<br>Min 1 mała litera<br>Min 1 znak specjalny";
-    } else if (
-      containsUpperCase(password) &&
-      containsLowerCase(password) &&
-      !containsSpecialCharter(password)
-    ) {
-      message.innerHTML = "Min 1 znak specjalny";
-    } else if (
-      containsUpperCase(password) &&
-      !containsLowerCase(password) &&
-      containsSpecialCharter(password)
-    ) {
-      message.innerHTML = "Min 1 mała litera";
-    } else if (
-      !containsUpperCase(password) &&
-      containsLowerCase(password) &&
-      !containsSpecialCharter(password)
-    ) {
-      message.innerHTML = "Min 1 duża litera<br>Min 1 znak specjalny";
-    } else if (
-      !containsUpperCase(password) &&
-      containsLowerCase(password) &&
-      containsSpecialCharter(password)
-    ) {
-      message.innerHTML = "Min 1 duża litera";
-    } else if (
-      !containsUpperCase(password) &&
-      !containsLowerCase(password) &&
-      containsSpecialCharter(password)
-    ) {
-      message.innerHTML = "Min 1 duża litera<br>Min 1 mała litera";
-    } else {
-      message.innerHTML = "";
+    if (!containsUpperCase(password)) {
+      info += "Min 1 duża litera<br>";
     }
+    if (!containsLowerCase(password)) {
+      info += "Min 1 mała litera<br>";
+    }
+    if (!containsSpecialCharter(password)) {
+      info += "Min 1 znak specjalny<br>";
+    }
+    message.innerHTML = info;
   }
+
   if (password != confirmPassword) {
     messageTwo.innerHTML = "Hasła różnią się od siebie!";
   } else {
