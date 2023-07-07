@@ -118,19 +118,11 @@ function checkIfCorrect() {
     messageTwo.innerHTML = "";
   }
 
-  if (stop) {
-    clearInterval(checkIfCorrect);
-  }
-
   function containsLowerCase(str) {
     return Boolean(str.match(/[aąbcćdeęfghijklłmnńoóprsśtuwyzźż]/));
   }
   function containsUpperCase(str) {
-    return Boolean(
-      str.match(
-        /[A Ą B C Ć D E Ę F G H I J K L Ł M N Ń O Ó P R S Ś T U W Y Z Ź Ż]/
-      )
-    );
+    return Boolean(str.match(/[AĄBCĆDEĘFGHIJKLŁMNŃOÓPRSŚTUWYZŹŻ]/));
   }
   function containsSpecialCharter(str) {
     return Boolean(str.match(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/));
