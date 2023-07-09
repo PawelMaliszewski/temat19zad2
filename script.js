@@ -9,18 +9,19 @@ function checkPassword() {
 }
 
 function checkIfCorrect() {
-  message.innerHTML = returnMissingElementsInfo();
-  messageTwo.innerHTML = returnPasswordsComparison();
+  message.innerHTML = returnStrMissingElementsInfo();
+  messageTwo.innerHTML = returnStrPasswordsComparison();
   
 }
-   function returnMissingElementsInfo() {
+
+   function returnStrMissingElementsInfo() {
        if(password.value.length < 8) {
-         return "Za krótkie hasło. Min 8 znaków<br>" + checkAndReturnMissingElements();
+         return "Za krótkie hasło. Min 8 znaków<br>" + checkAndReturnStrMissingElements();
        }
-       return checkAndReturnMissingElements();
+       return checkAndReturnStrMissingElements();
      }
 
-  function checkAndReturnMissingElements() {
+  function checkAndReturnStrMissingElements() {
     let info = "";
       if (!containsUpperCase(password.value)) {
         info += "Min 1 duża litera<br>"
@@ -34,7 +35,7 @@ function checkIfCorrect() {
       return info;
    }
 
-   function returnPasswordsComparison() {
+   function returnStrPasswordsComparison() {
     if (password.value != confirmPassword.value) {
       return  "Hasła różnią się od siebie!";
     } else {
